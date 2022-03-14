@@ -4,7 +4,7 @@ build/
 
 # Backend
 
-backend/env/*
+backend/env-project/*
 backend/src/db.sqlite3
 **/__pycache__/
 
