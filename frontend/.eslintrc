@@ -1,0 +1,46 @@
+// https://medium.com/@feralamillo/create-react-app-typescript-eslint-and-prettier-699277b0b913
+
+// wip -- might add/change more later on.
+// module.exports = {
+{
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint"],
+    "extends": ["react-app"],
+    "parserOptions": {
+        "project": "./tsconfig.json"
+    },
+    "settings": {
+        "import/resolver": {
+        "typescript": {
+            "alwaysTryTypes": true
+        }
+        }
+    },
+    "rules": {
+        "eol-last": 2,
+        "indent": ["error", 2],
+        "no-trailing-spaces": "error",
+        "no-multiple-empty-lines": ["error", {
+        "max": 2,
+        "maxEOF": 0,
+        "maxBOF": 0
+        }],
+        "comma-dangle": "error",
+        "arrow-parens": ["error", "always"],
+        "jsx-quotes": ["error", "prefer-double"],
+        "@typescript-eslint/quotes": ["error", "double", {
+        "allowTemplateLiterals": true,
+        "avoidEscape": true
+        }],
+        "semi": ["error", "always"],
+        "react/jsx-props-no-spreading": "off",
+        "import/prefer-default-export": "off",
+        "react/jsx-boolean-value": "off",
+        "react/prop-types": "off",
+        "react/no-unescaped-entities": "off",
+        "react/jsx-one-expression-per-line": "off",
+        "react/jsx-wrap-multilines": "off",
+        "react/destructuring-assignment": "off"
+    }
+}
+    
