@@ -1,8 +1,8 @@
-from app import db
+from app.db import db
 from enum import Enum
 import datetime
 from sqlalchemy.dialects.postgresql import UUID, ARRAY, ENUM, JSONB
-from sqlalchemy.ext.mutable import MutableDict
+# from sqlalchemy.ext.mutable import MutableDict
 import uuid
 
 class Aspect(str, Enum):
@@ -12,15 +12,6 @@ class Aspect(str, Enum):
 
     def __str__(self) -> str:
         return str.__str__(self)
-
-### TODO: confirm that this type is indeed removed
-# class MediaType(str, Enum):
-#     DIGITAL = 'digital'
-#     MATERIAL = 'material'
-#     INFORMATIONAL = 'inform'
-
-#     def __str__(self) -> str:
-#         return str.__str__(self)
 
 class Goal(str, Enum):
     PEER_SUPPORT = 'peer-spt'
@@ -46,42 +37,18 @@ class SubCategory(str, Enum):
     def __str__(self) -> str:
         return str.__str__(self)
 
-
-### TODO: confirm that these types are indeed removed
-# class ResourceType(models.TextChoices):
-#     TREATMENT = 'trt'
-#     PEER_SUPPORT = 'peer-sup'
-#     SELF_MANAGEMENT = 'self-mgmt'
-#     CONSULTATION = 'cons'
-#     EXERCISE = 'exer'
-
-# class Attendance(models.TextChoices):
-#     IN_PERSON = 'in-pers'
-#     ONLINE_ASYNC = 'o-async'
-#     ONLINE_LIVE = 'o-live'
-#     NONE = 'none'
-#     BY_PHONE = 'phone'
-#     EMAIL = 'email'
-#     TEXT = 'txt'
-#     ONLINE_FORM = 'o-form'
-
-
 class Resource(db.Model):
     id = db.Column(
         UUID(as_uuid=True),
         primary_key=True,
         default=uuid.uuid4)
-    ### TODO: confirm if title is unique=True
     title = db.Column(
         db.String(150),
         nullable=False)
     description = db.Column(db.Text)
-    ### TODO: confirm content structure
     content = db.Column(
-        ARRAY(MutableDict.as_mutable(JSONB)),
-        nullable=False
+        ARRAY(db.Text),
     )
-    ### TODO: confirm that array of enums are all non-empty for every resource
     aspect = db.Column(
         ARRAY(ENUM(Aspect)),
         nullable=False)
@@ -93,7 +60,7 @@ class Resource(db.Model):
         nullable=False
     )
     image_name = db.Column(db.String(200))
-    # isFree = db.Column(db.Boolean)
+    external_links = db.Column(ARRAY(db.Text))
     created = db.Column(
         db.DateTime,
         default=datetime.datetime.utcnow,
