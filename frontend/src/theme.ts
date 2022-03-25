@@ -20,23 +20,59 @@ declare module "@mui/material/Typography" {
 }
 
 export const theme = createTheme({
-  // palette: {
-  //   secondary: {
-  //     main: "#EBF445"
-  //   }
-  // },
+  palette: {
+    common: {
+      black: "#231F20",
+      white: "#F2F2F3"
+    },
+    primary: {
+      main: "#E867A6"
+    },
+    secondary: {
+      main: "#94D4F5"
+    }
+  },
   typography: {
-    fontFamily: "Krona One, Lexend, sans-serif",
-    body1: {
-      fontFamily: "Lexend, Krona One, sans-serif",
+    fontFamily: "Krona One, Lexend, Exo 2, sans-serif",
+    h1: {
+      fontFamily: "Exo 2, sans-serif",
       fontWeight: 400
     },
+    h2: {
+      fontFamily: "Exo 2, sans-serif",
+      fontWeight: 400
+    },
+    h6: {
+      fontFamily: "Krona One, sans-serif",
+      fontWeight: 400
+    },
+    subtitle1: {
+      fontFamily: "Lexend, sans-serif",
+      fontWeight: 500,
+      color: "#231F20"
+    },
+    subtitle2: {
+      fontFamily: "Krona One, sans-serif",
+      fontWeight: 400
+    },
+    body1: {
+      fontFamily: "Lexend, sans-serif",
+      fontWeight: 400,
+      color: "#231F20"
+    },
+    body2: {
+      fontFamily: "Lexend, sans-serif",
+      fontWeight: 300
+    },
     body_xlight: {
-      fontFamily: "Lexend, Krona One, sans-serif",
+      fontFamily: "Lexend, sans-serif",
       fontWeight: 200
     },
     button: {
       textTransform: "none"
+    },
+    caption: {
+      fontFamily: "Exo 2, sans-serif"
     }
   }
 });
