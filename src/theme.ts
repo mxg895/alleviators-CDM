@@ -30,6 +30,9 @@ export const theme = createTheme({
     },
     secondary: {
       main: "#94D4F5"
+    },
+    info: { /*sdf*/
+      main: "rgba(0, 0, 0, 0.54)"
     }
   },
   typography: {

@@ -8,9 +8,11 @@ import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import BASEURL from "../../baseURL";
+import { selectHasViewedSkip, viewedSkip } from "../../questionnaires/choiceSlice";
 import { OnboardingResState, QuestionState, selectOnboardingState, updateOnboarding } from "../../questionnaires/questionnaireSlice";
 import QuestionnaireType, { Aspect, Goal, SubCategory, TagGroup } from "../../questionnaires/types";
 import Form from "../form";
+import Modal from "../modal";
 import TextButton from "../textButton";
 
 interface QuestionnaireProps{
@@ -20,13 +22,39 @@ interface QuestionnaireProps{
 
 const Questionnaire = ({questionnaire = []/* , onBoardingState */}: QuestionnaireProps) => {
   const [currIdx, setIdx] = useState(0);
+  const hasViewedSkip = useSelector(selectHasViewedSkip);
   const qLen = questionnaire.length;
   const [progress, setProgress] = useState((currIdx + 1)/qLen * 100);
   const [readyToFetch, setReadyToFetch] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const onBoardingState : OnboardingResState = useSelector(selectOnboardingState);
 
   const dispatch = useDispatch();
+
+  const closeModal = () => {
+    dispatch(viewedSkip());
+    setOpen(false);
+  };
+
+  const handleModalSkip = () => {
+    dispatch(viewedSkip());
+    dispatch(updateOnboarding({[currIdx]: null} as OnboardingResState));
+    setOpen(false);
+    if (currIdx < qLen - 1) {
+      setIdx(currIdx + 1);
+    } else if (currIdx === qLen - 1) {
+      setReadyToFetch(true);
+    } else {
+      console.error("SHOULD NOT HAPPEN: currIdx < 0 in Questionnaire");
+    }
+  };
+
+  const handleModalAnswer = () => {
+    setOpen(false);
+    dispatch(viewedSkip());
+  };
+
   const handlePrevious = () => {
     if (currIdx > 0) {
       setIdx(currIdx - 1);
@@ -75,21 +103,20 @@ const Questionnaire = ({questionnaire = []/* , onBoardingState */}: Questionnair
     return tagGroup;
   }, [onBoardingState, questionnaire]);
 
-  // const fetchWithPreference = useCallback(() => {
-  //   const tagPrefs = buildTagPreferences();
-  //   console.log(tagPrefs);
-  // }, [buildTagPreferences]);
-
   const handleSkip = () => {
-    dispatch(updateOnboarding({[currIdx]: null} as OnboardingResState));
-    if (currIdx < qLen - 1) {
-      setIdx(currIdx + 1);
-    } else if (currIdx === qLen - 1) {
-      setReadyToFetch(true);
+    if (!hasViewedSkip) {
+      setOpen(true);
+      // dispatch(updateOnboarding({[currIdx]: null} as OnboardingResState));
     } else {
-      console.error("SHOULD NOT HAPPEN: currIdx < 0 in Questionnaire");
-    }
-  };
+      dispatch(updateOnboarding({[currIdx]: null} as OnboardingResState));
+      if (currIdx < qLen - 1) {
+        setIdx(currIdx + 1);
+      } else if (currIdx === qLen - 1) {
+        setReadyToFetch(true);
+      } else {
+        console.error("SHOULD NOT HAPPEN: currIdx < 0 in Questionnaire");
+      }
+    }};
 
   const handleNext = () => {
     if (currIdx < qLen - 1) {
@@ -112,17 +139,12 @@ const Questionnaire = ({questionnaire = []/* , onBoardingState */}: Questionnair
         subcategory: Array.from(tagPrefs.subcategory)
       }).then((res) => {
         // TODO: remove this once ready!
-        console.log(res);
+        console.log(res.data);
+        // console.log(JSON.stringify(res.data, null, 2));
       }).catch((err) => {
         console.error(
           "Unexpected error while trying to fetch curated content from backend: ", err);
       });
-      // axios.get(`${BASEURL}/resource/124890`).then((res) => {
-      //   console.log(res);
-      // }).catch((err) => {
-      //   console.error(
-      //     "Unexpected error while trying to fetch curated content from backend: ", err);
-      // });
     }
     setReadyToFetch(false);
 
@@ -141,7 +163,6 @@ const Questionnaire = ({questionnaire = []/* , onBoardingState */}: Questionnair
             <TextButton btnText="Previous" btnIcon={<CheveronLeft />} onClick={handlePrevious}></TextButton>
           </Grid>
           }
-          {/* TODO: add a modal when user clicks on "Skip" => check if this modal is one time, or every time they are on fist question */}
           <Grid item xs textAlign="right">
             <TextButton alignToRight={true} btnText="Skip" onClick={handleSkip}></TextButton>
           </Grid>
@@ -166,6 +187,16 @@ const Questionnaire = ({questionnaire = []/* , onBoardingState */}: Questionnair
           <Typography variant="h6">Next</Typography>
         </Button>
       </Grid>
+      <Modal
+        isOpen={!hasViewedSkip && open}
+        title="Wait!"
+        content="The more questions you answer, the better we can tailor the resources to fit your requirements."
+        handleClose={closeModal}
+        actionButtons={
+          <><Button onClick={handleModalAnswer}>Answer</Button>
+            <Button onClick={handleModalSkip} color="info">Skip</Button>
+          </>}
+      />
     </>
   );
 };

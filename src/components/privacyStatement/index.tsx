@@ -1,10 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/system/Box";
@@ -12,6 +7,7 @@ import { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import logo from "../../medias/branding/pepita_logo.png";
 import { acceptAgreement } from "../../protectedRoutes/authSlice";
+import Modal from "../modal";
 const PrivacyStatement = () => {
   const [open, setOpen] = useState(false);
   const handleClose = () => {
@@ -42,20 +38,15 @@ const PrivacyStatement = () => {
           Our site collects and stores information about you and your preferences to personalize content and provide you with curated resources.`}
         </Typography>
       </Stack>
-      <Dialog open={open} onClose={handleClose} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
-        <DialogTitle id="alert-dialog-title" sx={{typography: "subtitle1"}}>Before you begin</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description" sx={{typography: "body2", color:"common.black"}}>
-            {`We know that things change over time, so don’t worry - our site allows you to modify your responses to these questions whenever
-          you’d like. Answer the following questions based on how you feel right now. `}
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={updatePrivacy}>Continue</Button>
-        </DialogActions>
-      </Dialog>
+      <Modal
+        isOpen={open}
+        handleClose={handleClose}
+        title="Before you begin"
+        content={
+          `We know that things change over time, so don’t worry - our site allows you to modify your responses to these questions whenever
+          you’d like. Answer the following questions based on how you feel right now.`}
+        actionButtons={<Button onClick={updatePrivacy}>Continue</Button>}/>
     </>
-    // </Box>
   );
 };
 

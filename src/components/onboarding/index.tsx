@@ -13,7 +13,7 @@ const OnBoarding = () => {
     <Grid container height="100%" justifyContent="center">
       {usePrivacy
         ?
-        <Grid container direction="column" /* justifyContent="center" alignSelf="end" */ sx={{maxWidth: {xs: "90%", md: "70%", lg: "50%"}}}>
+        <Grid container direction="column" sx={{maxWidth: {xs: "90%", md: "70%", lg: "50%"}}}>
           <Questionnaire questionnaire={OnboardingQuestionnaire} onBoardingState={onBoardingState}/>
         </Grid>
         :
