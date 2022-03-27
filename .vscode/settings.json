@@ -1,0 +1,11 @@
+{
+    // "workbench.editorAssociations": {   
+    //     "*.md": "vscode.markdown.preview.editor",
+    // }
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true,
+        "source.organizeImports": true,
+    },
+    "editor.tabSize": 2,
+    "eslint.workingDirectories": ["./frontend"],
+}
