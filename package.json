@@ -27,7 +27,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "build:prod": "npm install && npm run build",
+    "build:prod": "npm install --production && npm run build",
     "lint": "npx eslint --ext .ts,.tsx --fix src",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
