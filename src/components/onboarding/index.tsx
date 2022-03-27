@@ -1,7 +1,7 @@
 import Grid from "@mui/material/Grid";
 import { useSelector } from "react-redux";
 import { selectPrivacyState } from "../../protectedRoutes/authSlice";
-import OnboardingQuestionnaire from "../../questionnaires/Onboarding";
+import OnboardingQuestionnaire from "../../questionnaires/onboarding";
 import { OnboardingResState, selectOnboardingState } from "../../questionnaires/questionnaireSlice";
 import PrivacyStatement from "../privacyStatement";
 import Questionnaire from "../questionnaire";
