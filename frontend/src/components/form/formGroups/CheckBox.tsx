@@ -21,11 +21,11 @@ const CheckBoxGroup = ({qIdx, options, helperText}: CheckBoxProps) => {
 
   // Reflect changes to checkbox on both the local and the reducer state
   const toggleChecked = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log("calling toggleChecked!");
-    console.log("original selected options" + JSON.stringify);
+    // console.log("calling toggleChecked!");
+    // console.log("original selected options" + JSON.stringify);
     const updatedSelections = selectedOptions.map((_, i) => {
       if (e?.target?.value === i.toString()) {
-        console.log(`Found matching checkbox at index: ${i}`);
+        // console.log(`Found matching checkbox at index: ${i}`);
         return !selectedOptions[i];
       }
       return selectedOptions[i];
@@ -36,7 +36,6 @@ const CheckBoxGroup = ({qIdx, options, helperText}: CheckBoxProps) => {
 
 
   useEffect(() => {
-    console.log("in use effect");
     setSelectedOptions(onBoardingState?.[qIdx] as boolean[] || new Array<boolean>(options.length).fill(false));
   }, [onBoardingState, options.length, qIdx]);
 

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
-type QuestionState = number | boolean[] | null;
+export type QuestionState = number | boolean[] | null;
 export interface OnboardingResState {
   [index: number]: QuestionState
 }

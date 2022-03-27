@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
+import resourceReducer from "./components/resources/resourceSlice";
 import authReducer from "./protectedRoutes/authSlice";
 import qRReducer from "./questionnaires/questionnaireSlice";
 
 const store = configureStore({
   reducer: {
     auth: authReducer,
-    questionnaireRes: qRReducer
+    questionnaireRes: qRReducer,
+    resources: resourceReducer
   }
 });
 

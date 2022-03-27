@@ -1,6 +1,10 @@
+export interface TagGroup {
+    [tagName: string]: Set<Aspect | Goal | SubCategory>
+}
+
 export interface AnswerOption {
     label: string;
-    value: any;
+    value?: TagGroup;
 }
 
 export interface Question {

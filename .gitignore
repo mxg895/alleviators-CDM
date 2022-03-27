@@ -5,8 +5,11 @@ build/
 # Backend
 
 backend/env-project/*
+backend/491env/*
+drafts/env-project/*
 backend/src/db.sqlite3
-**/__pycache__/
+**/__pycache__/**
+backend/Export-960a6c5c-3f4b-4889-9359-5942d66266b2
 
 # Others
 .env

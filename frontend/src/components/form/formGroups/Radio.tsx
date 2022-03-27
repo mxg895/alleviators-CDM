@@ -22,7 +22,6 @@ const RadioGroup = ({options, qIdx}: RadioOptionProps) => {
   return (
     <MUIRadioGroup defaultValue={-1}>
       {options.map((opt, i) => {
-        console.log(`qIdx: ${qIdx}, i: ${i}`);
         return <FormControlLabel
           key={`${qIdx}-${i}`}
           control={<RadioControl

@@ -70,7 +70,7 @@ const OnboardingQuestionnaire : Questionnaire = [
         }
       },
       {
-        label: "No, I don’t help with that",
+        label: "No, I don't help with that",
         value: {
           aspect: new Set<Aspect>(["PHYSICAL"]),
           goal: new Set<Goal>(["MANAGE_PAIN"])
@@ -110,7 +110,7 @@ const OnboardingQuestionnaire : Questionnaire = [
         label: "Yes, I think external support to help me would be useful",
         value: {
           aspect: new Set<Aspect>(["SOCIAL"]),
-          goal: new Set<Goal>(["PEER_SUPPORT"]) // TODO: check if it's peer_support from goal or subCategory
+          goal: new Set<Goal>(["PEER_SUPPORT"])
         }
       },
       {
@@ -131,14 +131,14 @@ const OnboardingQuestionnaire : Questionnaire = [
         label: "I have some support, but I’d like more",
         value: {
           aspect: new Set<Aspect>(["SOCIAL"]),
-          goal: new Set<Goal>(["PEER_SUPPORT"]) // TODO: check if it's peer_support from goal or subCategory
+          goal: new Set<Goal>(["PEER_SUPPORT"])
         }
       },
       {
         label: "I have almost no support from others",
         value: {
           aspect: new Set<Aspect>(["SOCIAL", "EMOTIONAL"]),
-          goal: new Set<Goal>(["PEER_SUPPORT", "MANAGE_PAIN"]) // TODO: check if it's peer_support from goal or subCategory
+          goal: new Set<Goal>(["PEER_SUPPORT", "MANAGE_PAIN"])
         }
       }
     ]
@@ -156,25 +156,31 @@ const OnboardingQuestionnaire : Questionnaire = [
       {
         label: "Articles",
         value: {
-          subcategory: new Set<SubCategory>(["READING"]) // TODO: check if this is indeed changed
+          subcategory: new Set<SubCategory>(["READING"])
         }
       },
       {
         label: "Resources I can print out",
         value: {
-          subcategory: new Set<SubCategory>(["READING"]) // TODO: check if this is indeed changed
+          subcategory: new Set<SubCategory>(["READING"])
         }
       },
       {
         label: "Websites and Apps",
         value: {
-          subcategory: new Set<SubCategory>(["WEBSITE"])
+          subcategory: new Set<SubCategory>(["WEBSITE", "APP"])
         }
       },
       {
         label: "Physical products",
         value: {
-          subcategory: new Set<SubCategory>(["DEVICE"]) // TODO: check if this is indeed changed
+          subcategory: new Set<SubCategory>(["DEVICE"])
+        }
+      },
+      {
+        label: "Podcasts",
+        value: {
+          subCategory: new Set<SubCategory>(["PODCAST"])
         }
       }
     ]
