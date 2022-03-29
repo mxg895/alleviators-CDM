@@ -17,10 +17,6 @@ import Modal from "../modal";
 import { updateSummaries } from "../resources/resourceSlice";
 import TextButton from "../textButton";
 
-
-const env = process.env;
-console.log("env: ", env);
-
 interface QuestionnaireProps{
   questionnaire: QuestionnaireType
   onBoardingState?: OnboardingResState
@@ -140,7 +136,7 @@ const Questionnaire = ({questionnaire = []/* , onBoardingState */}: Questionnair
       // fetchWithPreference();
       const tagPrefs = buildTagPreferences();
       console.log(tagPrefs);
-      axios.post(`${env.REACT_APP_BASE_URL || BASEURL}/resource`, {
+      axios.post(`${BASEURL}/resource`, {
         aspect: Array.from(tagPrefs.aspect),
         goal: Array.from(tagPrefs.goal),
         subcategory: Array.from(tagPrefs.subcategory)
