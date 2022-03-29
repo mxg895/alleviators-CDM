@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import ResourceCard from "./ResourceCard";
 import { selectOrderedResources } from "./resourceSlice";
 
-const StyledLogo = styled.img`
+export const StyledLogo = styled.img`
   min-width: 30vw;
   width: 30vw;
 `;
@@ -58,7 +58,9 @@ const ResourceList = () => {
                 key={r.id}
                 cardTitle={r.title}
                 imageLocation={`resource-images/${r.imageName}`}
-                resourceType={lowerCaseSuffix(r.subcategory?.[0]) || ""}/>
+                resourceType={lowerCaseSuffix(r.subcategory?.[0]) || ""}
+                resourceId={r.id}
+              />
             );
           })}
         </Grid>

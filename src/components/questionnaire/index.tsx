@@ -133,7 +133,6 @@ const Questionnaire = ({questionnaire = []/* , onBoardingState */}: Questionnair
 
   useEffect(() => {
     if (currIdx + 1 === qLen && readyToFetch) {
-      // fetchWithPreference();
       const tagPrefs = buildTagPreferences();
       console.log(tagPrefs);
       axios.post(`${BASEURL}/resource`, {
@@ -145,7 +144,6 @@ const Questionnaire = ({questionnaire = []/* , onBoardingState */}: Questionnair
         console.log(res.data);
         dispatch(updateSummaries(res.data));
         navigate("/resources");
-        // console.log(JSON.stringify(res.data, null, 2));
       }).catch((err) => {
         console.error(
           "Unexpected error while trying to fetch curated content from backend: ", err);

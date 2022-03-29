@@ -27,7 +27,12 @@ export const resourceSlice = createSlice({
 
 export default resourceSlice.reducer;
 export const {updateSummaries, updateResourceDetails} = resourceSlice.actions;
+
 // selectors
 const selectOrderedResources = (state: RootState) => state.resources.orderedResources;
-const selectDetailById = (id: string, state:RootState) => state.resources.resourceDetails[id];
-export { selectOrderedResources, selectDetailById };
+const selectDetailById = (id: string) => (state: RootState) => state.resources.resourceDetails?.[id];
+const selectSummaryById = (id: string) => (state: RootState) => {
+  return state.resources.orderedResources.filter((r)=> r.id === id)?.[0];
+};
+
+export { selectOrderedResources, selectDetailById, selectSummaryById };

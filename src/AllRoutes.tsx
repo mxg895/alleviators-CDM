@@ -1,6 +1,7 @@
 import Grid from "@mui/material/Grid";
 import { Route, Routes } from "react-router-dom";
 import OnBoarding from "./components/onboarding";
+import ResourceDetail from "./components/resourceDetail";
 import ResourceList from "./components/resources";
 
 const AllRoutes = () => {
@@ -9,7 +10,7 @@ const AllRoutes = () => {
       <Routes>
         <Route path="/" element={<OnBoarding />}/>
         <Route path="resources" element={<ResourceList />} />
-        <Route path="resource/:resourceId" element={<div>1Resource</div>}/>
+        <Route path="resource/:resourceId" element={<ResourceDetail />}/>
         <Route path="*" element={<div>Page Not Found!</div>} />
       </Routes>
     </Grid>
