@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/system/Box";
 import { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
-import logo from "../../medias/branding/pepita_logo.png";
+// import logo from "../../medias/branding/pepita_logo.png";
 import { acceptAgreement } from "../../protectedRoutes/authSlice";
 import Modal from "../modal";
 const PrivacyStatement = () => {
@@ -26,7 +26,7 @@ const PrivacyStatement = () => {
   return (
     <>
       <Stack alignItems="center" justifyContent="center" spacing="10vh" pb="3vh" textAlign="center" >
-        <Box component="img" src={logo} alt="Pepita logo" maxWidth="100%" /* sx={{maxWidth: {xs: "90%", md: "70%"}}} */ />
+        <Box component="img" src="branding/pepita_logo.png" alt="Pepita logo" maxWidth="100%" /* sx={{maxWidth: {xs: "90%", md: "70%"}}} */ />
         <Typography>
             Help us help you by taking a few moments to answer some questions.
         </Typography>

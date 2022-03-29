@@ -9,7 +9,7 @@ const StyledFormControl = styled(FormControl)`
   &.MuiFormControl-root {
     width: 100%;
     > .MuiFormLabel-root {
-      height: 2rem;
+      /* height: 2rem; */
       padding-top: 3rem;
     }
     > .MuiFormHelperText-root, .MuiFormGroup-root {

@@ -1,3 +1,4 @@
+import styled from "@emotion/styled";
 import Grid from "@mui/material/Grid";
 import { useSelector } from "react-redux";
 import { selectPrivacyState } from "../../protectedRoutes/authSlice";
@@ -6,22 +7,34 @@ import { OnboardingResState, selectOnboardingState } from "../../questionnaires/
 import PrivacyStatement from "../privacyStatement";
 import Questionnaire from "../questionnaire";
 
+const StyledGrid = styled(Grid)`
+  &.MuiGrid-root {
+    flex-flow: column nowrap;
+    margin-bottom: 2vh;
+    div:first-of-type {
+      margin-top: auto;
+    }
+  }
+`;
+
 const OnBoarding = () => {
   const usePrivacy = useSelector(selectPrivacyState);
   const onBoardingState : OnboardingResState = useSelector(selectOnboardingState);
   return (
-    <Grid container height="100%" justifyContent="center">
+    // <Grid container marginX="auto" maxWidth="md" minHeight="100vh" justifyContent="center" px="2rem">
+    <>
       {usePrivacy
         ?
-        <Grid container direction="column" sx={{maxWidth: {xs: "90%", md: "70%", lg: "50%"}}}>
+        <Grid container alignSelf="start" mt="50px">
           <Questionnaire questionnaire={OnboardingQuestionnaire} onBoardingState={onBoardingState}/>
         </Grid>
         :
-        <Grid container justifyContent="center" minHeight="70%" alignContent="start" alignSelf="end" sx={{maxWidth: {xs: "90%", md: "70%", lg: "50%"}}}>
+        <StyledGrid container>
           <PrivacyStatement />
-        </Grid>
+        </StyledGrid>
       }
-    </Grid>
+    </>
+    // </Grid>
   );
 };
 
