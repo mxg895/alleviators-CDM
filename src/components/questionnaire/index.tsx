@@ -7,13 +7,19 @@ import Typography from "@mui/material/Typography";
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import BASEURL from "../../baseURL";
 import { selectHasViewedSkip, viewedSkip } from "../../questionnaires/choiceSlice";
 import { OnboardingResState, QuestionState, selectOnboardingState, updateOnboarding } from "../../questionnaires/questionnaireSlice";
 import QuestionnaireType, { Aspect, Goal, SubCategory, TagGroup } from "../../questionnaires/types";
 import Form from "../form";
 import Modal from "../modal";
+import { updateSummaries } from "../resources/resourceSlice";
 import TextButton from "../textButton";
+
+
+const env = process.env;
+console.log("env: ", env);
 
 interface QuestionnaireProps{
   questionnaire: QuestionnaireType
@@ -27,6 +33,7 @@ const Questionnaire = ({questionnaire = []/* , onBoardingState */}: Questionnair
   const [progress, setProgress] = useState((currIdx + 1)/qLen * 100);
   const [readyToFetch, setReadyToFetch] = useState(false);
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   const onBoardingState : OnboardingResState = useSelector(selectOnboardingState);
 
@@ -133,13 +140,15 @@ const Questionnaire = ({questionnaire = []/* , onBoardingState */}: Questionnair
       // fetchWithPreference();
       const tagPrefs = buildTagPreferences();
       console.log(tagPrefs);
-      axios.post(`${BASEURL}/resource`, {
+      axios.post(`${env.REACT_APP_BASE_URL || BASEURL}/resource`, {
         aspect: Array.from(tagPrefs.aspect),
         goal: Array.from(tagPrefs.goal),
         subcategory: Array.from(tagPrefs.subcategory)
       }).then((res) => {
         // TODO: remove this once ready!
         console.log(res.data);
+        dispatch(updateSummaries(res.data));
+        navigate("/resources");
         // console.log(JSON.stringify(res.data, null, 2));
       }).catch((err) => {
         console.error(
@@ -148,7 +157,7 @@ const Questionnaire = ({questionnaire = []/* , onBoardingState */}: Questionnair
     }
     setReadyToFetch(false);
 
-  }, [buildTagPreferences, currIdx, onBoardingState, qLen, readyToFetch]);
+  }, [buildTagPreferences, currIdx, dispatch, navigate, onBoardingState, qLen, readyToFetch]);
 
   useEffect(() => {
     setProgress((currIdx + 1)/qLen * 100);
@@ -156,7 +165,7 @@ const Questionnaire = ({questionnaire = []/* , onBoardingState */}: Questionnair
 
   return (
     <>
-      <Grid container direction="column" justifyContent="end" sx={{height: "15vh"}} id="nav+progress-grid">
+      <Stack justifyContent="end" width="100%" id="nav+progress-grid" spacing={2}>
         <Stack direction="row">
           {currIdx > 0 &&
           <Grid item xs textAlign="left">
@@ -178,7 +187,7 @@ const Questionnaire = ({questionnaire = []/* , onBoardingState */}: Questionnair
           </Stack>
           <LinearProgress variant="determinate" value={progress}/>
         </Stack>
-      </Grid>
+      </Stack>
       <Grid container>
         <Form qIdx={currIdx} question={questionnaire[currIdx]}/>
       </Grid>
