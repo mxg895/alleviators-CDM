@@ -109,7 +109,6 @@ const Questionnaire = ({questionnaire = []/* , onBoardingState */}: Questionnair
   const handleSkip = () => {
     if (!hasViewedSkip) {
       setOpen(true);
-      // dispatch(updateOnboarding({[currIdx]: null} as OnboardingResState));
     } else {
       dispatch(updateOnboarding({[currIdx]: null} as OnboardingResState));
       if (currIdx < qLen - 1) {

@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import CheveronLeft from "@mui/icons-material/ChevronLeft";
+import { Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import axios from "axios";
 import { useEffect } from "react";
@@ -84,6 +85,7 @@ const ResourceDetail = () => {
         <div className="image-container" >
           <StyledImg src={`/resource-images/${resourceSummary.imageName}`} alt={`${resourceSummary.imageName}`} />
         </div>
+        <Typography variant="h5">{resourceSummary.title}</Typography>
         <ReactMarkdown
           children={resourceDetail.content}
           components={{

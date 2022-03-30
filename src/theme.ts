@@ -45,6 +45,11 @@ export const theme = createTheme({
       fontFamily: "Exo 2, sans-serif",
       fontWeight: 400
     },
+    h5: {
+      fontFamily: "Exo 2, sans-serif",
+      fontWeight: 700,
+      fontSize: "1rem"
+    },
     h6: {
       fontFamily: "Krona One, sans-serif",
       fontWeight: 400

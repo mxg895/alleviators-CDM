@@ -70,7 +70,7 @@ const OnboardingQuestionnaire : Questionnaire = [
         }
       },
       {
-        label: "No, I don't help with that",
+        label: "No, I don't need help with that",
         value: {
           aspect: new Set<Aspect>(["PHYSICAL"]),
           goal: new Set<Goal>(["MANAGE_PAIN"])
@@ -97,17 +97,17 @@ const OnboardingQuestionnaire : Questionnaire = [
         }
       },
       {
-        label: "I am managing well any stress related to my condition",
+        label: "I am managing any stress related to my condition very well",
         value: undefined
       }
     ]
   },
   {
-    description: "Would you be open to external support, either online or in-person, to help you manage your mental health (like peer-support groups)?",
+    description: "Would you be open to external support, either online or in-person, to help you manage your mental health (like peer support groups)?",
     type: "radio",
     options: [
       {
-        label: "Yes, I think external support to help me would be useful",
+        label: "Yes, I think external support would be beneficial to me",
         value: {
           aspect: new Set<Aspect>(["SOCIAL"]),
           goal: new Set<Goal>(["PEER_SUPPORT"])
@@ -120,7 +120,7 @@ const OnboardingQuestionnaire : Questionnaire = [
     ]
   },
   {
-    description: "Do you feel you are currently receiving enough support from people closest to you for dealing with your pain condition?",
+    description: "Do you feel like you're receiving enough support from those closest to you in managing your condition?",
     type: "radio",
     options: [
       {
@@ -180,7 +180,7 @@ const OnboardingQuestionnaire : Questionnaire = [
       {
         label: "Podcasts",
         value: {
-          subCategory: new Set<SubCategory>(["PODCAST"])
+          subcategory: new Set<SubCategory>(["PODCAST"])
         }
       }
     ]
