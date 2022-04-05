@@ -24,29 +24,29 @@ const OnboardingQuestionnaire : Questionnaire = [
     ]
   },
   {
-    description: "Do you think you know enough about chronic pain?",
+    description: "Do you think you know enough about your chronic pain?",
     type: "checkbox",
     options: [
       {
-        label: "I think I know enough",
+        label: "I think I know enough.",
         value: undefined
       },
       {
-        label: "I'd like to learn more about the physical aspects of my pain",
+        label: "I'd like to learn more about the physical aspects of my pain.",
         value: {
           aspect: new Set<Aspect>(["PHYSICAL"]),
           goal: new Set<Goal>(["PAIN_EDUCATION"])
         }
       },
       {
-        label: "I'd like to learn more about how my condition impacts my mental health",
+        label: "I'd like to learn more about how my condition affects my well-being.",
         value: {
           aspect: new Set<Aspect>(["EMOTIONAL"]),
           goal: new Set<Goal>(["PAIN_EDUCATION"])
         }
       },
       {
-        label: "No, I don’t have any information",
+        label: "No, I don’t have any information.",
         value: {
           aspect: new Set<Aspect>(["PHYSICAL", "EMOTIONAL"]),
           goal: new Set<Goal>(["PAIN_EDUCATION"])
@@ -59,18 +59,11 @@ const OnboardingQuestionnaire : Questionnaire = [
     type: "radio",
     options: [
       {
-        label: "Yes, I do need help with that",
+        label: "Yes.",
         value: undefined
       },
       {
-        label: "I know some resources, but maybe not enough",
-        value: {
-          aspect: new Set<Aspect>(["PHYSICAL"]),
-          goal: new Set<Goal>(["MANAGE_PAIN"])
-        }
-      },
-      {
-        label: "No, I don't need help with that",
+        label: "No.",
         value: {
           aspect: new Set<Aspect>(["PHYSICAL"]),
           goal: new Set<Goal>(["MANAGE_PAIN"])
@@ -83,21 +76,21 @@ const OnboardingQuestionnaire : Questionnaire = [
     type: "radio",
     options: [
       {
-        label: "I feel worried, stressed, hopeless, or even desperate",
+        label: "I feel worried, stressed, hopeless, or even desperate.",
         value: {
           aspect: new Set<Aspect>(["EMOTIONAL"]),
           goal: new Set<Goal>(["MANAGE_PAIN"])
         }
       },
       {
-        label: "It varies over time",
+        label: "It varies over time.",
         value: {
           aspect: new Set<Aspect>(["EMOTIONAL"]),
           goal: new Set<Goal>(["MANAGE_PAIN"])
         }
       },
       {
-        label: "I am managing any stress related to my condition very well",
+        label: "I am managing any stress related to my condition very well.",
         value: undefined
       }
     ]
@@ -107,14 +100,14 @@ const OnboardingQuestionnaire : Questionnaire = [
     type: "radio",
     options: [
       {
-        label: "Yes, I think external support would be beneficial to me",
+        label: "Yes, I think external support would be beneficial to me.",
         value: {
           aspect: new Set<Aspect>(["SOCIAL"]),
           goal: new Set<Goal>(["PEER_SUPPORT"])
         }
       },
       {
-        label: "No, I don’t need those kinds of resources",
+        label: "No, I don’t need those kinds of resources.",
         value: undefined
       }
     ]
@@ -124,18 +117,18 @@ const OnboardingQuestionnaire : Questionnaire = [
     type: "radio",
     options: [
       {
-        label: "Yes, I have the support I need",
+        label: "Yes, I have the support I need.",
         value: undefined
       },
       {
-        label: "I have some support, but I’d like more",
+        label: "I have some support, but I’d like more.",
         value: {
           aspect: new Set<Aspect>(["SOCIAL"]),
           goal: new Set<Goal>(["PEER_SUPPORT"])
         }
       },
       {
-        label: "I have almost no support from others",
+        label: "I have almost no support from others.",
         value: {
           aspect: new Set<Aspect>(["SOCIAL", "EMOTIONAL"]),
           goal: new Set<Goal>(["PEER_SUPPORT", "MANAGE_PAIN"])

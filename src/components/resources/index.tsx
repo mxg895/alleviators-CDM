@@ -36,7 +36,7 @@ const lowerCaseSuffix = (content: string) => {
 const ResourceList = () => {
   const orderedSummaries = useSelector(selectOrderedResources);
   return (
-    <Grid container direction="column" alignSelf="start" mt="50px" width="100%" rowSpacing={4}>
+    <Grid container direction="column" alignSelf="start" mt="50px" width="100%" rowSpacing={4} pb={4}>
       <Grid item>
         <StyledLogo src="branding/pepita_no_tagline.png" alt="pepita log without tagline" />
       </Grid>

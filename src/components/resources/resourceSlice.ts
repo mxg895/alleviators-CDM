@@ -7,8 +7,14 @@ interface ResourceState {
   orderedResources: ResourceSummary[]
 }
 
+// const getSummariesFromSession = () => {
+//   const summaries = window.sessionStorage.getItem("orderedSummaries");
+//   console.log("orderedSummaries: ", summaries);
+//   return JSON.parse(summaries || "{}");
+// };
+
 const initialState : ResourceState = {
-  resourceDetails: {},
+  resourceDetails: {} /* getSummariesFromSession() */,
   orderedResources: []
 };
 
@@ -17,6 +23,7 @@ export const resourceSlice = createSlice({
   initialState,
   reducers: {
     updateSummaries: (state, action: PayloadAction<Array<ResourceSummary>>) => {
+      window.sessionStorage.setItem("orderedSummaries", JSON.stringify(action.payload));
       state.orderedResources = action.payload;
     },
     updateResourceDetails: (state, action: PayloadAction<{id: string, content: ResourceDetail}>) => {
