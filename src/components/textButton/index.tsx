@@ -9,7 +9,7 @@ interface TextButtonProps extends ButtonProps {
 const TextButton = ({alignToRight = false, btnText, btnIcon, ...rest}: TextButtonProps) => {
   return (
     <Button
-      sx={{typography: "body1", justifyContent: `${alignToRight? "right" : "left"}`, textDecoration: "underline", paddingX: 0}}
+      sx={{typography: "body1", justifyContent: `${alignToRight? "right" : "left"}`, textDecoration: "underline", paddingX: 0, width: "fit-content"}}
       {... rest}>
       {btnIcon}
       {btnText}

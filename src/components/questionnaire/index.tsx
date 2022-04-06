@@ -133,14 +133,11 @@ const Questionnaire = ({questionnaire = []/* , onBoardingState */}: Questionnair
   useEffect(() => {
     if (currIdx + 1 === qLen && readyToFetch) {
       const tagPrefs = buildTagPreferences();
-      // console.log(tagPrefs);
       axios.post(`${BASEURL}/resource`, {
         aspect: Array.from(tagPrefs.aspect),
         goal: Array.from(tagPrefs.goal),
         subcategory: Array.from(tagPrefs.subcategory)
       }).then((res) => {
-        // TODO: remove this once ready!
-        // console.log(res.data);
         dispatch(updateSummaries(res.data));
         navigate("/resources");
       }).catch((err) => {

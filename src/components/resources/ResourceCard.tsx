@@ -28,7 +28,8 @@ const ResourceCard = ({cardTitle, imageLocation, resourceType, resourceId}: Reso
           <CardMedia component="img" image={imageLocation} alt="" height={140} sx={{objectPosition: "10% 30%"}}/>
           <CardContent sx={{alignContent: "space-between", backgroundColor: "#1E1E1E", display: "grid", height: "calc(100% - 150px)", padding: "0 20px"}}>
             <Grid container direction="column" mb="20px">
-              <Typography color="common.white" variant="subtitle1" sx={{"textDecoration": "underline"}}>{cardTitle}</Typography>
+              <Typography color="common.white" variant="subtitle1" sx={{textDecoration: "underline", ":hover": {cursor: "pointer"}}} onClick={toDetails}>{cardTitle}</Typography>
+              {/* <TextButton btnText={cardTitle} onClick={toDetails} sx={{textDecoration: "underline", typography: "subtitle1", color: "common.white"}}/> */}
               {
                 !!resourceType &&
               <Typography color="common.white" variant="body_xlight" component="div">{`Type: ${resourceType}`}</Typography>
