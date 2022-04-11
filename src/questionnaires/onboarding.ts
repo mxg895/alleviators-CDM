@@ -96,7 +96,7 @@ const OnboardingQuestionnaire : Questionnaire = [
     ]
   },
   {
-    description: "Would you be open to external support, either online or in-person, to help you manage your mental health (like peer support groups)?",
+    description: "Would you be open to external support, either online or in-person, to help you manage your well-being (like peer support groups)?",
     type: "radio",
     options: [
       {
